@@ -12,42 +12,19 @@
       <section class="modal-card-body">
         <div class="field">
           <div class="control">
-            <label>Title</label>
-            <input class="input is-primary" type="text" placeholder="Primary input" [(ngModel)]="title">
+            <label>Nama</label>
+            <input class="input is-primary" type="text" placeholder="Primary input" [(ngModel)]="nama">
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <label>Deskripsi Singkat</label>
-            <textarea class="textarea is-primary" type="text" placeholder="Primary textarea" [(ngModel)]="deskripsisingkat"></textarea>
+            <label>Penerbit</label>
+            <input class="input is-primary" type="text" placeholder="Primary input" [(ngModel)]="penerbit">
           </div>
-        </div>
-        <div class="field">
-          <div class="control">
-            <label>Deskripsi Lengkap</label>
-            <textarea class="textarea is-primary" type="text" placeholder="Primary textarea" [(ngModel)]="deskripsilengkap"></textarea>
-          </div>
-        </div>
-        <br>
-        <div class="file has-name">
-          <label class="file-label">
-            <input class="file-input" type="file" name="resume" (change)="onFileChange($event)">
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-upload"></i>
-              </span>
-              <span class="file-label">
-                Choose a file…
-              </span>
-            </span>
-            <span class="file-name">
-              Screen Shot 2017-07-29 at 15.54.25.png
-            </span>
-          </label>
         </div>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success" (click)="simpan()">
+        <button class="button is-success" (click)="SaveChanged()">
           <span class="icon">
             <i class="fa fa-save"></i>
           </span>

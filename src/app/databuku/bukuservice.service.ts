@@ -21,4 +21,7 @@ export class BukuserviceService {
       ` } 
     })
   }
+  createData(data){
+    this._feathers.service('databuku').create(data)
+  }
 }

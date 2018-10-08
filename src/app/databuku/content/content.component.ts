@@ -11,6 +11,8 @@ export class ContentComponent implements OnInit {
 
   rates: Observable<any[]>;
   status: boolean = false;
+  nama:String
+  penerbit:String
   constructor(private bukuservice:BukuserviceService) {
     this.rates = bukuservice.getData().pipe(
       map(m=>m['findDatabuku'])
@@ -20,5 +22,12 @@ export class ContentComponent implements OnInit {
   }
   tooglemodals(){
     this.status = !this.status
+  }
+  SaveChanged(){
+    let data = {
+      "nama" : this.nama,
+      "penerbit":this.penerbit
+    }
+    this.bukuservice.createData(data)
   }
 }
