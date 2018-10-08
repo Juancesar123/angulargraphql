@@ -2,38 +2,98 @@
 
 </app-navbar>
 <section class="section">
-<button class="button is-link">
-  <span class="icon">
-    <i class="fa fa-plus"></i>
-  </span>
-  <span>Tambah Data</span>
-</button>
-<table class="table  is-striped is-hoverable is-fullwidth">
-  <thead>
-    <th>Nama Buku</th>
-    <th>Penerbit</th>
-    <th>Action</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of rates | async">
-      <td>{{item.nama}}</td>
-      <td>{{item.penerbit}}</td>
-      <td>
-        <button class="button is-danger" (click)="Delete(item)">
+  <div class="modal"  [ngClass]="status ? 'is-active' : ''">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Masukkan Data Berita</p>
+        <button class="delete" aria-label="close" (click)="tooglemodals()"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+          <div class="control">
+            <label>Title</label>
+            <input class="input is-primary" type="text" placeholder="Primary input" [(ngModel)]="title">
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label>Deskripsi Singkat</label>
+            <textarea class="textarea is-primary" type="text" placeholder="Primary textarea" [(ngModel)]="deskripsisingkat"></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label>Deskripsi Lengkap</label>
+            <textarea class="textarea is-primary" type="text" placeholder="Primary textarea" [(ngModel)]="deskripsilengkap"></textarea>
+          </div>
+        </div>
+        <br>
+        <div class="file has-name">
+          <label class="file-label">
+            <input class="file-input" type="file" name="resume" (change)="onFileChange($event)">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+            <span class="file-name">
+              Screen Shot 2017-07-29 at 15.54.25.png
+            </span>
+          </label>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" (click)="simpan()">
           <span class="icon">
-            <i class="fa fa-trash"></i>
+            <i class="fa fa-save"></i>
           </span>
-          <span>Delete</span>
+          <span>Save changes</span>
         </button>
-        <button class="button is-success" (click)="UpdateForm(item)">
+        <button class="button" (click)="tooglemodals()">
           <span class="icon">
-            <i class="fa fa-edit"></i>
+            <i class="fa fa-times"></i>
           </span>
-          <span>Update</span>
+          <span>Cancel</span>
         </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </footer>
+    </div>
+  </div>
+  <button class="button is-link" (click)="tooglemodals()">
+    <span class="icon">
+      <i class="fa fa-plus"></i>
+    </span>
+    <span>Tambah Data</span>
+  </button>
+  <table class="table  is-striped is-hoverable is-fullwidth">
+    <thead>
+      <th>Nama Buku</th>
+      <th>Penerbit</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of rates | async">
+        <td>{{item.nama}}</td>
+        <td>{{item.penerbit}}</td>
+        <td>
+          <button class="button is-danger" (click)="Delete(item)">
+            <span class="icon">
+              <i class="fa fa-trash"></i>
+            </span>
+            <span>Delete</span>
+          </button>
+          <button class="button is-success" (click)="UpdateForm(item)">
+            <span class="icon">
+              <i class="fa fa-edit"></i>
+            </span>
+            <span>Update</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </section>
 <app-footer></app-footer>
